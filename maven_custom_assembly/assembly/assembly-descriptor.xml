@@ -1,0 +1,57 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assemblyplugin/
+assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assemblyplugin/
+assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+
+	<id> run </id>
+	<includeBaseDirectory>true</includeBaseDirectory>
+	<formats>
+		<format>zip</format>
+	</formats>
+	
+	<!-- In the fileSets tag, we specify which file we want to put in the output 
+		directories -->
+	<fileSets>
+		<!-- In the case of the bin directory, all the source directory contents 
+			will be copied into the destination directory -->
+		<fileSet>
+			<directory>config/scripts</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+
+		<fileSet>
+			<directory>config</directory>
+			<outputDirectory>conf</outputDirectory>
+			<includes>
+				<include>app.properties</include>
+				<include>log4j.*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+
+	<!-- All the JAR files related to the libraries and application batches 
+		are included using the dependencySets tag. -->
+	<dependencySets>
+		<!-- here include all dependencies except the main jar -->
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<unpack>false</unpack>
+			<scope>compile</scope>
+			<excludes>
+				<exclude>${artifact}</exclude>
+			</excludes>
+		</dependencySet>
+
+		<dependencySet>
+			<outputDirectory>libRun</outputDirectory>
+			<unpack>false</unpack>
+			<scope>compile</scope>
+			<!--  include only the main jar -->
+			<includes>
+				<include>${artifact}</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+</assembly>
