@@ -1,0 +1,7 @@
+this is a test
+artifact id: maven_filter_resources
+version is 0.0.1-SNAPSHOT
+env is local
+log level is DEBUG
+artifactId is maven_filter_resources
+artifact is com.learning.maven:maven_filter_resources:jar:0.0.1-SNAPSHOT

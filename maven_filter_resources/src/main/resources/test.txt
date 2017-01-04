@@ -1,0 +1,7 @@
+this is a test
+artifact id: ${project.artifactId}
+version is ${project.version}
+env is ${env}
+log level is ${log.level}
+artifactId is ${artifactId}
+artifact is ${artifact}
